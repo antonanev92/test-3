@@ -11,3 +11,18 @@ const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`)
 });
+
+const inventory = {
+    merlin: 4,
+    raptor: 5,
+    falcon9: 9
+}
+app.get('/:name', (req, res, next) => {
+    const inventoryList = inventory[req.params.name];
+    if(inventoryList) {
+        res.send(inventoryList)
+    } else {
+        res.status(404).send('Not Found')
+    }
+
+})
