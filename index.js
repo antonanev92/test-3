@@ -17,6 +17,11 @@ const inventory = {
     raptor: 5,
     falcon9: 9
 }
+
+app.get('/', (req, res) => {
+    res.send('listening sir')
+})
+
 app.get('/:name', (req, res, next) => {
     const inventoryList = inventory[req.params.name];
     if(inventoryList) {
